@@ -1,6 +1,6 @@
 # Отчет по лабораторной работе №1
 
-**Питропов Александр,группа I2302**  
+**Питропов Александр, группа I2302**
 
 ## Тема
 
@@ -21,6 +21,8 @@
 ## Часть про Author
 
 ### AuthorController.java
+
+**Пояснение:** контроллер обрабатывает HTTP-запросы, связанные с авторами. Он позволяет получить список всех авторов, одного конкретного автора по id, создать нового автора, обновить существующего и удалить автора.
 
 ```java
 package lab.one.demo.controllers;
@@ -74,6 +76,8 @@ public class AuthorController {
 
 ### AuthorService.java
 
+**Пояснение:** сервисный слой, который содержит бизнес-логику. Здесь происходит преобразование между entity и DTO, работа с репозиторием авторов и книг, обновление информации об авторах и их книгах.
+
 ```java
 @Service
 public class AuthorService {
@@ -110,6 +114,8 @@ public class AuthorService {
 
 ### Author.java (Entity)
 
+**Пояснение:** класс-сущность JPA, который описывает таблицу авторов в базе данных. Содержит поля id, имя, фамилия и связь один-ко-многим с книгами.
+
 ```java
 @Entity
 @Table(name = "author")
@@ -131,6 +137,8 @@ public class Author {
 
 ### AuthorDto.java
 
+**Пояснение:** DTO-класс, предназначенный для передачи данных об авторе через API. Содержит те же данные, что и entity, но используется только на уровне контроллера и сервиса, чтобы избежать прямой работы с entity.
+
 ```java
 public class AuthorDto {
     private Long id;
@@ -145,6 +153,8 @@ public class AuthorDto {
 
 ### AuthorRepository.java
 
+**Пояснение:** интерфейс репозитория, который расширяет JpaRepository. Предоставляет готовые CRUD-методы для работы с базой данных без написания SQL-запросов.
+
 ```java
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {}
@@ -153,3 +163,4 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {}
 ## Заключение
 
 В лабораторной работе реализовано приложение с CRUD-операциями и связями между сущностями. Работа выполнена с использованием Spring Boot, JPA, DTO и протестирована через Swagger.
+
